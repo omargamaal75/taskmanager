@@ -2,10 +2,6 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from .models import Task
 
-
-# -------------------------------
-# User Serializer
-# -------------------------------
 class UserSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
 
@@ -14,7 +10,6 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'password']
 
     def create(self, validated_data):
-        # عشان نعمل hash للباسورد
         user = User.objects.create_user(
             username=validated_data['username'],
             email=validated_data.get('email'),
@@ -23,11 +18,8 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
-# -------------------------------
-# Task Serializer
-# -------------------------------
 class TaskSerializer(serializers.ModelSerializer):
-    owner = serializers.ReadOnlyField(source='owner.username')  # يظهر بس اسم صاحب التاسك
+    owner = serializers.ReadOnlyField(source='owner.username') 
 
     class Meta:
         model = Task
