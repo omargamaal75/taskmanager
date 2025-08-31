@@ -29,5 +29,5 @@ This project allows users to manage tasks with authentication using **JWT tokens
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/YOUR_USERNAME/taskmanager.git
+git clone https://github.com/omargamaal75/taskmanager.git
 cd taskmanager
